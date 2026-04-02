@@ -228,7 +228,7 @@ Wave FINAL (After ALL tasks — 4 parallel reviews, then user okay):
   - Install core deps: `bun add astro @astrojs/react react react-dom`
   - Install form deps: `bun add react-hook-form zod @hookform/resolvers`
   - Install API deps: `bun add axios`
-  - Install dev deps: `bun add -d oxlint @biomejs/biome` (note: oxfmt is not yet standalone — use biome for formatting or prettier as fallback; investigate oxfmt availability)
+  - Install dev deps: `bun add -d oxlint oxfmt`
   - Install Tailwind: `bun add -d @tailwindcss/vite`
   - Configure `astro.config.mjs`: add React integration, Tailwind vite plugin, `output: 'static'`
   - Add `.gitignore` with node_modules, dist, .env, .netlify
