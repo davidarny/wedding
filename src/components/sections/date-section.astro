@@ -4,8 +4,8 @@ import SectionHeading from "../ui/section-heading.astro";
 import DecorativeDots from "../ui/decorative-dots.astro";
 ---
 
-<section id="date" class="bg-white relative">
-  <SectionWrapper className="flex flex-col items-center text-center">
+<section id="date" class="bg-white relative flex-none">
+  <SectionWrapper noPadding className="flex flex-col items-center text-center px-6 py-8 md:px-8 md:py-12">
     <p class="uppercase tracking-widest text-xs md:text-sm text-text-muted max-w-xs mx-auto font-body">
       БУДЕМ СЧАСТЛИВЫ РАЗДЕЛИТЬ ЭТОТ ДЕНЬ С ВАМИ
     </p>
@@ -24,7 +24,7 @@ import DecorativeDots from "../ui/decorative-dots.astro";
       ЖДЕМ ВАС!
     </p>
 
-    <div class="mt-8 w-full">
+    <div class="mt-4 w-full">
       <slot />
     </div>
   </SectionWrapper>

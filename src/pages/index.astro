@@ -23,10 +23,12 @@ import MobileNav from "../components/islands/mobile-nav.jsx";
   <Header />
   <MobileNav client:load />
   <main class="pt-14">
-    <HeroSection />
-    <DateSection>
-      <CountdownTimer client:visible />
-    </DateSection>
+    <div class="h-[calc(100svh-3.5rem)] flex flex-col overflow-hidden">
+      <HeroSection />
+      <DateSection>
+        <CountdownTimer client:visible />
+      </DateSection>
+    </div>
 
     <div class="tile-pattern-block">
       <div data-reveal>

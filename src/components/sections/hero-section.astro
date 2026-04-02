@@ -4,12 +4,14 @@ import DecorativeDots from "../ui/decorative-dots.astro";
 import FloralFrame from "../ui/floral-frame.astro";
 ---
 
-<section id="hero" class="bg-white">
-  <FloralFrame image="/images/floral-hero-frame.png" position="top" imageClassName="scale-[1.35] origin-top">
-    <div class="min-h-[55svh] flex flex-col items-center justify-end pb-10 md:pb-14 px-6 text-center">
-      <DecorativeDots />
-      <p class="uppercase tracking-widest text-sm text-text-muted mb-4 font-body">ВМЕСТЕ И НАВСЕГДА</p>
-      <SectionHeading as="h1" size="lg" className="mb-8">Даниил & Анастасия</SectionHeading>
+<section id="hero" class="bg-white flex-1 min-h-0">
+  <FloralFrame image="/images/floral-hero-frame.png" position="top" imageClassName="scale-[1.35] origin-top" className="h-full">
+    <div class="h-full flex flex-col items-center justify-end px-6 text-center">
+      <div class="bg-gradient-to-t from-white via-white/90 to-transparent pt-16 pb-6 w-full flex flex-col items-center">
+        <DecorativeDots />
+        <p class="uppercase tracking-widest text-sm text-text-muted mb-4 font-body">ВМЕСТЕ И НАВСЕГДА</p>
+        <SectionHeading as="h1" size="lg" className="mb-4">Даниил & Анастасия</SectionHeading>
+      </div>
     </div>
   </FloralFrame>
 </section>
