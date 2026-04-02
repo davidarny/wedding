@@ -23,16 +23,11 @@ import DecorativeDots from '../ui/decorative-dots.astro';
     <p class="uppercase tracking-widest text-sm text-text-muted font-body">
       ЖДЕМ ВАС!
     </p>
-    
-    <div id="countdown-slot" class="mt-8 w-full"></div>
+
+    <div class="mt-8 w-full">
+      <slot />
+    </div>
   </SectionWrapper>
 
-  <div class="w-full overflow-hidden leading-none flex">
-    <img 
-      src="/images/floral-top-border.png" 
-      alt="" 
-      class="w-full h-auto object-cover pointer-events-none select-none"
-      aria-hidden="true"
-    />
-  </div>
+
 </section>

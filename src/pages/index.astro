@@ -24,11 +24,9 @@ import MobileNav from "../components/islands/mobile-nav.jsx";
   <MobileNav client:load />
   <main class="pt-14">
     <HeroSection />
-    <DateSection />
-
-    <div class="max-w-3xl mx-auto px-6">
+    <DateSection>
       <CountdownTimer client:visible />
-    </div>
+    </DateSection>
 
     <div data-reveal>
       <DearGuestSection />
