@@ -11,8 +11,7 @@ const navItems = [
   { id: "schedule", label: "Расписание" },
   { id: "map", label: "Карта" },
 ];
-
-export default function MobileNav() {
+export default function MobileNav({ embeddedShell = false }) {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -64,20 +63,21 @@ export default function MobileNav() {
       <div
         onClick={handleClose}
         className={clsx(
-          "fixed inset-0 bg-black/50 z-[9998] transition-[opacity,visibility] duration-300",
+          "fixed inset-0 bg-black/50 z-9998 transition-[opacity,visibility] duration-300",
           isOpen ? "opacity-100 visible" : "opacity-0 invisible",
         )}
       />
 
       <div
         className={clsx(
-          "fixed top-0 left-0 w-[280px] h-screen bg-white flex flex-col z-[9999] transition-transform duration-300",
+          "fixed top-0 left-0 w-70 h-screen bg-white flex flex-col z-9999 transition-transform duration-300",
           isOpen
             ? "translate-x-0 shadow-[2px_0_8px_rgba(0,0,0,0.1)]"
             : "-translate-x-full",
+          embeddedShell && "pt-(--device-safe-top)",
         )}
       >
-        <div className="flex justify-end p-4">
+        <div className={clsx("flex justify-end p-4", embeddedShell && "pt-0")}>
           <button
             onClick={handleClose}
             className="bg-transparent border-none text-2xl cursor-pointer text-text p-2 flex items-center justify-center"

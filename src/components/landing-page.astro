@@ -1,0 +1,114 @@
+---
+import Header from "./header.astro";
+
+import HeroSection from "./sections/hero-section.astro";
+import DateSection from "./sections/date-section.astro";
+import DearGuestSection from "./sections/dear-guest-section.astro";
+import CouplePhotoSection from "./sections/couple-photo-section.astro";
+import QuoteSection from "./sections/quote-section.astro";
+import CoupleProfilesSection from "./sections/couple-profiles-section.astro";
+import InfoSections from "./sections/info-sections.astro";
+import DressCodeSection from "./sections/dress-code-section.astro";
+import ScheduleSection from "./sections/schedule-section.astro";
+import MapSection from "./sections/map-section.astro";
+
+import CountdownTimer from "./islands/countdown-timer.jsx";
+import RsvpForm from "./islands/rsvp-form.jsx";
+import MessageSurveyForm from "./islands/message-survey-form.jsx";
+import MobileNav from "./islands/mobile-nav.jsx";
+
+const { embeddedShell = false } = Astro.props;
+---
+
+<div class:list={["landing-page", embeddedShell && "landing-page--embedded-shell"]}>
+  <Header />
+  <MobileNav client:load embeddedShell={embeddedShell} />
+
+  <main class="landing-page__main pt-14">
+    <div class="landing-page__first-screen h-[calc(100svh-3.5rem)] flex flex-col overflow-hidden">
+      <HeroSection />
+      <DateSection>
+        <CountdownTimer client:visible />
+      </DateSection>
+    </div>
+
+  <div class="tile-pattern-block">
+    <div data-reveal>
+      <DearGuestSection />
+    </div>
+    <div data-reveal>
+      <CouplePhotoSection />
+    </div>
+    <div data-reveal>
+      <QuoteSection />
+    </div>
+    <div data-reveal>
+      <CoupleProfilesSection />
+    </div>
+    <InfoSections />
+    <DressCodeSection />
+
+    <div data-reveal>
+      <RsvpForm client:visible />
+    </div>
+  </div>
+
+  <div data-reveal class="max-w-3xl mx-auto px-6 py-10 md:py-16">
+    <MessageSurveyForm client:visible />
+  </div>
+
+    <ScheduleSection />
+    <MapSection />
+  </main>
+</div>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  document.querySelectorAll("[data-reveal]").forEach((el) => {
+    observer.observe(el);
+  });
+</script>
+
+<style>
+  .landing-page--embedded-shell {
+    --device-safe-top: 3.5rem;
+    --device-safe-bottom: 0.35rem;
+  }
+
+  .landing-page--embedded-shell :global(#header) {
+    height: calc(3.5rem + var(--device-safe-top));
+    padding-top: var(--device-safe-top);
+    box-sizing: border-box;
+  }
+
+  .landing-page--embedded-shell .landing-page__main {
+    padding-top: calc(3.5rem + var(--device-safe-top));
+    padding-bottom: var(--device-safe-bottom);
+  }
+
+  .landing-page--embedded-shell .landing-page__first-screen {
+    height: calc(100svh - 3.5rem - var(--device-safe-top));
+  }
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  [data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
