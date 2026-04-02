@@ -1,19 +1,16 @@
 ---
 import SectionWrapper from '../ui/section-wrapper.astro';
 import SectionHeading from '../ui/section-heading.astro';
-import FloralFrame from '../ui/floral-frame.astro';
 ---
 
-<FloralFrame image="/images/floral-full-frame.png" position="full">
-  <SectionWrapper id="dear-guest" noPadding className="px-6 py-20 md:px-8 md:py-32 text-center">
-    <SectionHeading cursive size="md" className="mb-6">
-      Дорогой Гость!
-    </SectionHeading>
-    <p class="font-body text-lg leading-relaxed max-w-md mx-auto text-text">
-      Мы рады сообщить Вам, что 06.06.2026 состоится самое главное торжество в нашей жизни - день нашей свадьбы! Приглашаем Вас разделить с нами радость этого незабываемого дня.
-    </p>
-    <div class="mt-8 text-lg font-heading font-bold text-text">
-      06.06.2026 в 15:00
-    </div>
-  </SectionWrapper>
-</FloralFrame>
+<SectionWrapper id="dear-guest" noPadding className="px-6 py-10 md:px-8 md:py-16 text-center bg-white/80">
+  <SectionHeading cursive size="md" className="mb-6">
+    Дорогой Гость!
+  </SectionHeading>
+  <p class="font-body text-lg leading-relaxed max-w-md mx-auto text-text">
+    Мы рады сообщить Вам, что 06.06.2026 состоится самое главное торжество в нашей жизни - день нашей свадьбы! Приглашаем Вас разделить с нами радость этого незабываемого дня.
+  </p>
+  <div class="mt-8 text-lg font-heading font-bold text-text">
+    06.06.2026 в 15:00
+  </div>
+</SectionWrapper>

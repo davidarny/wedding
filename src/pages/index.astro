@@ -28,26 +28,28 @@ import MobileNav from "../components/islands/mobile-nav.jsx";
       <CountdownTimer client:visible />
     </DateSection>
 
-    <div data-reveal>
-      <DearGuestSection />
-    </div>
-    <div data-reveal>
-      <CouplePhotoSection />
-    </div>
-    <div data-reveal>
-      <QuoteSection />
-    </div>
-    <div data-reveal>
-      <CoupleProfilesSection />
-    </div>
-    <InfoSections />
-    <DressCodeSection />
+    <div class="tile-pattern-block" style="background: url('/images/floral-tile-pattern.png') repeat center / 400px;">
+      <div data-reveal>
+        <DearGuestSection />
+      </div>
+      <div data-reveal>
+        <CouplePhotoSection />
+      </div>
+      <div data-reveal>
+        <QuoteSection />
+      </div>
+      <div data-reveal>
+        <CoupleProfilesSection />
+      </div>
+      <InfoSections />
+      <DressCodeSection />
 
-    <div data-reveal>
-      <RsvpForm client:visible />
+      <div data-reveal>
+        <RsvpForm client:visible />
+      </div>
     </div>
 
-    <div data-reveal>
+    <div data-reveal class="max-w-3xl mx-auto px-6 pb-16 md:pb-24">
       <MessageSurveyForm client:visible />
     </div>
 

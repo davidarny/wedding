@@ -17,6 +17,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "LeJardin";
+  src: url("/fonts/le-jardine.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Custom Theme — Tailwind v4 @theme syntax */
 @theme {
   /* Colors */
@@ -39,6 +47,7 @@
 
   /* Fonts */
   --font-heading: "Cormorant Infant", serif;
+  --font-cursive: "LeJardin", cursive;
   --font-body: "Cormorant Infant", serif;
 }
 
@@ -52,7 +61,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 700;
+}
+
+.font-cursive {
+  font-family: var(--font-cursive) !important;
+  font-weight: 400 !important;
 }

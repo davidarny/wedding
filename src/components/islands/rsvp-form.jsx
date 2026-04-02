@@ -51,29 +51,32 @@ export default function RsvpForm() {
   return (
     <div className="text-center py-8 px-6" style={{ fontFamily: '"Cormorant Infant", serif' }}>
       <button
+        type="button"
         onClick={handleConfirm}
         disabled={status === "loading" || status === "success"}
         style={{
           ...buttonStyles[status],
+          background:
+            status === "idle" || status === "error"
+              ? "linear-gradient(180deg, rgba(255,255,255,.18) 0%, rgba(255,255,255,.03) 46%, rgba(0,0,0,.12) 100%), #5C6B4F"
+              : undefined,
           borderRadius: "9999px",
-          padding: "14px 48px",
+          padding: "18px 48px",
           fontSize: "1.25rem",
           fontWeight: 700,
           fontFamily: '"Cormorant Infant", serif',
           border: "none",
           cursor: status === "loading" || status === "success" ? "default" : "pointer",
           transition: "all 0.2s ease",
-          boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+          boxShadow: "0 4px 12px rgba(92, 107, 79, 0.3)",
           width: "100%",
-          maxWidth: "320px",
+          maxWidth: "400px",
         }}
       >
         {buttonText[status]}
       </button>
       {status === "error" && (
-        <p style={{ color: "#dc2626", marginTop: "8px", fontSize: "0.875rem" }}>
-          {errorMsg}
-        </p>
+        <p style={{ color: "#dc2626", marginTop: "8px", fontSize: "0.875rem" }}>{errorMsg}</p>
       )}
     </div>
   );

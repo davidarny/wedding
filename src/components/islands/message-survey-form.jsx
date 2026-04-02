@@ -244,17 +244,19 @@ export default function MessageSurveyForm() {
         type="submit"
         disabled={status === "loading"}
         style={{
-          backgroundColor: "#8B9D77",
+          background:
+            "linear-gradient(180deg, rgba(255,255,255,.18) 0%, rgba(255,255,255,.03) 46%, rgba(0,0,0,.12) 100%), #8B9D77",
           color: "white",
           border: "none",
-          padding: "1rem",
-          borderRadius: "4px",
+          padding: "18px",
+          borderRadius: "9999px",
           fontSize: "1.2rem",
           fontWeight: "600",
           cursor: status === "loading" ? "not-allowed" : "pointer",
           fontFamily: "inherit",
-          transition: "background-color 0.2s",
+          transition: "all 0.2s ease",
           opacity: status === "loading" ? 0.7 : 1,
+          boxShadow: "0 4px 12px rgba(92, 107, 79, 0.3)",
           width: "100%",
           marginTop: "1rem",
         }}
