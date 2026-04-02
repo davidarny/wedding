@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useState } from "react";
 import { submitRsvp } from "../../services/rsvp-service.js";
 
@@ -40,7 +41,10 @@ export default function RsvpForm() {
 				type="button"
 				onClick={handleConfirm}
 				disabled={status === "loading" || status === "success"}
-				className={`text-white rounded-full py-4.5 px-12 text-xl font-bold font-heading border-none transition-all duration-200 shadow-btn w-full max-w-[400px] ${buttonClasses[status]}`}
+				className={clsx(
+					"text-white rounded-full py-4.5 px-12 text-xl font-bold font-heading border-none transition-all duration-200 shadow-btn w-full max-w-[400px]",
+					buttonClasses[status],
+				)}
 			>
 				{buttonText[status]}
 			</button>

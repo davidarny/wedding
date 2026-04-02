@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useEffect, useState } from "react";
 
 const navItems = [
@@ -62,11 +63,19 @@ export default function MobileNav() {
     <>
       <div
         onClick={handleClose}
-        className={`fixed inset-0 bg-black/50 z-[9998] transition-[opacity,visibility] duration-300 ${isOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
+        className={clsx(
+          "fixed inset-0 bg-black/50 z-[9998] transition-[opacity,visibility] duration-300",
+          isOpen ? "opacity-100 visible" : "opacity-0 invisible",
+        )}
       />
 
       <div
-        className={`fixed top-0 left-0 w-[280px] h-screen bg-white flex flex-col z-[9999] transition-transform duration-300 ${isOpen ? "translate-x-0 shadow-[2px_0_8px_rgba(0,0,0,0.1)]" : "-translate-x-full"}`}
+        className={clsx(
+          "fixed top-0 left-0 w-[280px] h-screen bg-white flex flex-col z-[9999] transition-transform duration-300",
+          isOpen
+            ? "translate-x-0 shadow-[2px_0_8px_rgba(0,0,0,0.1)]"
+            : "-translate-x-full",
+        )}
       >
         <div className="flex justify-end p-4">
           <button
