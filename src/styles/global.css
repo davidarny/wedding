@@ -2,27 +2,27 @@
 
 /* Font Faces */
 @font-face {
-  font-family: "Cormorant Infant";
-  src: url("/fonts/cormorant-infant-light.woff") format("woff");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
+	font-family: "Cormorant Infant";
+	src: url("/fonts/cormorant-infant-light.woff") format("woff");
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-  font-family: "Cormorant Infant";
-  src: url("/fonts/cormorant-infant-bold.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
+	font-family: "Cormorant Infant";
+	src: url("/fonts/cormorant-infant-bold.woff") format("woff");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
-  font-family: "LeJardin";
-  src: url("/fonts/le-jardine.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+	font-family: "LeJardin";
+	src: url("/fonts/le-jardine.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
 }
 
 /* Custom Theme — Tailwind v4 @theme syntax */
@@ -39,11 +39,11 @@
   --color-survey-bg: #e8f0ec;
 
   /* Dress code palette */
-  --color-dress-1: #3d5a3a;
-  --color-dress-2: #6b7b4c;
-  --color-dress-3: #8b9d77;
-  --color-dress-4: #b5c4a3;
-  --color-dress-5: #d4c9a8;
+  --color-dress-1: #607135;
+  --color-dress-2: #a65a5a;
+  --color-dress-3: #dde09b;
+  --color-dress-4: #96bc64;
+  --color-dress-5: #9c7152;
 
   /* Fonts */
   --font-heading: "Cormorant Infant", serif;
@@ -55,12 +55,12 @@
 
 /* Base styles */
 body {
-  font-family: var(--font-body);
-  font-weight: 300;
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	font-family: var(--font-body);
+	font-weight: 300;
+	color: var(--color-text);
+	background-color: var(--color-bg);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 h1,
@@ -69,8 +69,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-heading);
-  font-weight: 700;
+	font-family: var(--font-heading);
+	font-weight: 700;
 }
 
 @utility btn-gradient-dark {
@@ -96,7 +96,7 @@ h6 {
 }
 
 @layer components {
-  .tile-pattern-block {
-    background: url("/images/floral-tile-pattern.png") repeat center / 400px;
-  }
+	.tile-pattern-block {
+		background: url("/images/floral-tile-pattern.png") repeat center / 400px;
+	}
 }
