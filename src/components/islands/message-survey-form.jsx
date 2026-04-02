@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { submitMessage, submitSurvey } from "../../services/rsvp-service.js";
+import RadioGroup from "./radio-group.jsx";
 
 const formSchema = z.object({
   message: z.string().optional(),
@@ -10,6 +11,22 @@ const formSchema = z.object({
   transfer: z.string().optional(),
   alcohol: z.string().optional(),
 });
+
+const transferOptions = [
+  "Нет",
+  "Только до торжества",
+  "Только после торжества",
+  "До и после торжества",
+];
+
+const alcoholOptions = [
+  "Красное вино",
+  "Белое вино",
+  "Шампанское",
+  "Виски/коньяк",
+  "Не буду пить алкоголь",
+  "Самогон",
+];
 
 export default function MessageSurveyForm() {
   const [status, setStatus] = useState("idle");
@@ -47,8 +64,7 @@ export default function MessageSurveyForm() {
 
       await Promise.all(promises);
       setStatus("success");
-    } catch (error) {
-      console.error("Error submitting form:", error);
+    } catch {
       setStatus("error");
       setErrorMessage("Произошла ошибка при отправке. Пожалуйста, попробуйте еще раз.");
     }
@@ -56,210 +72,62 @@ export default function MessageSurveyForm() {
 
   if (status === "success") {
     return (
-      <div
-        style={{
-          textAlign: "center",
-          padding: "2rem",
-          backgroundColor: "#E8F0EC",
-          borderRadius: "8px",
-          color: "#5C6B4F",
-        }}
-      >
-        <h3
-          style={{
-            fontFamily: '"Cormorant Infant", serif',
-            fontSize: "1.5rem",
-            marginBottom: "1rem",
-          }}
-        >
-          Спасибо!
-        </h3>
+      <div className="text-center p-8 bg-survey-bg rounded-lg text-primary-dark">
+        <h3 className="font-heading text-2xl mb-4">Спасибо!</h3>
         <p>Ваши ответы успешно отправлены.</p>
       </div>
     );
   }
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "2rem",
-        fontFamily: '"Cormorant Infant", serif',
-        color: "#2D2D2D",
-      }}
-    >
-      <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-        <label style={{ fontSize: "1.2rem", fontWeight: "500" }}>
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-8 text-text">
+      <div className="flex flex-col gap-4">
+        <label htmlFor="message" className="text-xl font-medium">
           💬 Добавить сообщение для жениха и невесты
         </label>
         <textarea
+          id="message"
           {...register("message")}
           rows={4}
           placeholder="Ваше сообщение..."
-          style={{
-            width: "100%",
-            padding: "0.75rem",
-            border: "1px solid #D4DFC7",
-            borderRadius: "4px",
-            fontFamily: "inherit",
-            fontSize: "1rem",
-            resize: "vertical",
-            outlineColor: "#8B9D77",
-            boxSizing: "border-box",
-          }}
+          className="w-full p-3 border border-primary-light rounded font-[inherit] text-base resize-y outline-none focus:ring-2 focus:ring-primary box-border"
         />
-        <label
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "0.5rem",
-            cursor: "pointer",
-            fontSize: "1.1rem",
-          }}
-        >
+        <label className="flex items-center gap-2 cursor-pointer text-lg">
           <input
             type="checkbox"
             {...register("moneyGift")}
-            style={{ width: "1.2rem", height: "1.2rem", accentColor: "#8B9D77", cursor: "pointer" }}
+            className="size-5 accent-primary cursor-pointer"
           />
           денежный подарок
         </label>
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-        <div
-          style={{
-            backgroundColor: "#E8F0EC",
-            borderLeft: "4px solid #C4A97D",
-            padding: "1rem",
-            borderRadius: "0 4px 4px 0",
-            textAlign: "center",
-            fontSize: "1.1rem",
-          }}
-        >
+      <div className="flex flex-col gap-6">
+        <div className="bg-survey-bg border-l-4 border-accent p-4 rounded-r text-center text-lg">
           Пожалуйста, ответьте на вопросы, которые для вас подготовили <strong>Жених</strong> и{" "}
           <strong>Невеста</strong>:
         </div>
 
-        <div
-          style={{
-            backgroundColor: "#E8F0EC",
-            padding: "1.5rem",
-            borderRadius: "8px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "1.5rem",
-          }}
-        >
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-            <p style={{ fontWeight: "600", fontSize: "1.2rem", margin: 0 }}>
-              Потребуется ли вам трансфер?
-            </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-              {["Нет", "Только до торжества", "Только после торжества", "До и после торжества"].map(
-                (option) => (
-                  <label
-                    key={option}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "0.5rem",
-                      cursor: "pointer",
-                      minHeight: "44px",
-                      fontSize: "1.1rem",
-                    }}
-                  >
-                    <input
-                      type="radio"
-                      value={option}
-                      {...register("transfer")}
-                      style={{
-                        width: "1.2rem",
-                        height: "1.2rem",
-                        accentColor: "#8B9D77",
-                        cursor: "pointer",
-                        margin: 0,
-                      }}
-                    />
-                    {option}
-                  </label>
-                ),
-              )}
-            </div>
-          </div>
-
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
-            <p style={{ fontWeight: "600", fontSize: "1.2rem", margin: 0 }}>
-              Какой алкоголь вы предпочитаете?
-            </p>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-              {[
-                "Красное вино",
-                "Белое вино",
-                "Шампанское",
-                "Виски/коньяк",
-                "Не буду пить алкоголь",
-                "Самогон",
-              ].map((option) => (
-                <label
-                  key={option}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.5rem",
-                    cursor: "pointer",
-                    minHeight: "44px",
-                    fontSize: "1.1rem",
-                  }}
-                >
-                  <input
-                    type="radio"
-                    value={option}
-                    {...register("alcohol")}
-                    style={{
-                      width: "1.2rem",
-                      height: "1.2rem",
-                      accentColor: "#8B9D77",
-                      cursor: "pointer",
-                      margin: 0,
-                    }}
-                  />
-                  {option}
-                </label>
-              ))}
-            </div>
-          </div>
+        <div className="bg-survey-bg p-6 rounded-lg flex flex-col gap-6">
+          <RadioGroup
+            label="Потребуется ли вам трансфер?"
+            options={transferOptions}
+            register={register("transfer")}
+          />
+          <RadioGroup
+            label="Какой алкоголь вы предпочитаете?"
+            options={alcoholOptions}
+            register={register("alcohol")}
+          />
         </div>
       </div>
 
-      {status === "error" && (
-        <div style={{ color: "#d32f2f", textAlign: "center", fontSize: "1.1rem" }}>
-          {errorMessage}
-        </div>
-      )}
+      {status === "error" && <div className="text-red-600 text-center text-lg">{errorMessage}</div>}
 
       <button
         type="submit"
         disabled={status === "loading"}
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(255,255,255,.18) 0%, rgba(255,255,255,.03) 46%, rgba(0,0,0,.12) 100%), #8B9D77",
-          color: "white",
-          border: "none",
-          padding: "18px",
-          borderRadius: "9999px",
-          fontSize: "1.2rem",
-          fontWeight: "600",
-          cursor: status === "loading" ? "not-allowed" : "pointer",
-          fontFamily: "inherit",
-          transition: "all 0.2s ease",
-          opacity: status === "loading" ? 0.7 : 1,
-          boxShadow: "0 4px 12px rgba(92, 107, 79, 0.3)",
-          width: "100%",
-          marginTop: "1rem",
-        }}
+        className="btn-gradient text-white border-none py-4.5 rounded-full text-xl font-semibold cursor-pointer font-[inherit] transition-all duration-200 shadow-btn w-full mt-4 disabled:opacity-70 disabled:cursor-not-allowed"
       >
         {status === "loading" ? "Отправка..." : "✈ Отправить"}
       </button>

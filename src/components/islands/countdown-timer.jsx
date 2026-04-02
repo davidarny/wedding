@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const TARGET_DATE = new Date("2026-06-06T15:00:00+03:00");
 
@@ -38,10 +38,8 @@ export default function CountdownTimer() {
 
   if (!timeLeft) {
     return (
-      <div className="text-center py-8" style={{ fontFamily: '"Cormorant Infant", serif' }}>
-        <p className="text-2xl md:text-3xl font-bold" style={{ color: '#5C6B4F' }}>
-          Свадьба состоялась!
-        </p>
+      <div className="text-center py-8">
+        <p className="text-2xl md:text-3xl font-bold text-primary-dark">Свадьба состоялась!</p>
       </div>
     );
   }
@@ -55,19 +53,13 @@ export default function CountdownTimer() {
   ];
 
   return (
-    <div className="flex justify-center items-start gap-4 md:gap-8 py-8" style={{ fontFamily: '"Cormorant Infant", serif' }}>
+    <div className="flex justify-center items-start gap-4 md:gap-8 py-8">
       {units.map((unit) => (
         <div key={unit.label} className="text-center">
-          <div
-            className="text-3xl md:text-5xl font-bold leading-none"
-            style={{ color: '#2D2D2D' }}
-          >
+          <div className="text-3xl md:text-5xl font-bold leading-none text-text">
             {String(unit.value).padStart(2, "0")}
           </div>
-          <div
-            className="text-xs md:text-sm mt-2 uppercase tracking-wider"
-            style={{ color: '#6B6B6B' }}
-          >
+          <div className="text-xs md:text-sm mt-2 uppercase tracking-wider text-text-muted">
             {unit.label}
           </div>
         </div>

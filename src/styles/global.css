@@ -30,25 +30,27 @@
   /* Colors */
   --color-bg: #ffffff;
   --color-bg-soft: #f7f7f2;
-  --color-primary: #8B9D77;
-  --color-primary-dark: #5C6B4F;
-  --color-primary-light: #D4DFC7;
-  --color-text: #2D2D2D;
-  --color-text-muted: #6B6B6B;
-  --color-accent: #C4A97D;
-  --color-survey-bg: #E8F0EC;
+  --color-primary: #8b9d77;
+  --color-primary-dark: #5c6b4f;
+  --color-primary-light: #d4dfc7;
+  --color-text: #2d2d2d;
+  --color-text-muted: #6b6b6b;
+  --color-accent: #c4a97d;
+  --color-survey-bg: #e8f0ec;
 
   /* Dress code palette */
-  --color-dress-1: #3D5A3A;
-  --color-dress-2: #6B7B4C;
-  --color-dress-3: #8B9D77;
-  --color-dress-4: #B5C4A3;
-  --color-dress-5: #D4C9A8;
+  --color-dress-1: #3d5a3a;
+  --color-dress-2: #6b7b4c;
+  --color-dress-3: #8b9d77;
+  --color-dress-4: #b5c4a3;
+  --color-dress-5: #d4c9a8;
 
   /* Fonts */
   --font-heading: "Cormorant Infant", serif;
   --font-cursive: "LeJardin", cursive;
   --font-body: "Cormorant Infant", serif;
+
+  --shadow-btn: 0 4px 12px rgba(92, 107, 79, 0.3);
 }
 
 /* Base styles */
@@ -71,7 +73,30 @@ h6 {
   font-weight: 700;
 }
 
-.font-cursive {
-  font-family: var(--font-cursive) !important;
-  font-weight: 400 !important;
+@utility btn-gradient-dark {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(255, 255, 255, 0.03) 46%,
+      rgba(0, 0, 0, 0.12) 100%
+    ),
+    var(--color-primary-dark);
+}
+
+@utility btn-gradient {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.18) 0%,
+      rgba(255, 255, 255, 0.03) 46%,
+      rgba(0, 0, 0, 0.12) 100%
+    ),
+    var(--color-primary);
+}
+
+@layer components {
+  .tile-pattern-block {
+    background: url("/images/floral-tile-pattern.png") repeat center / 400px;
+  }
 }

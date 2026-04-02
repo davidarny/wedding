@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from "react";
 
 const navItems = [
   { id: "hero", label: "Главная" },
@@ -13,35 +13,34 @@ const navItems = [
 
 export default function MobileNav() {
   const [isOpen, setIsOpen] = useState(false);
-  const [hoveredId, setHoveredId] = useState(null);
 
   useEffect(() => {
-    const toggleButton = document.getElementById('menu-toggle');
-    
+    const toggleButton = document.getElementById("menu-toggle");
+
     const handleToggleClick = () => {
       setIsOpen(true);
     };
 
     if (toggleButton) {
-      toggleButton.addEventListener('click', handleToggleClick);
+      toggleButton.addEventListener("click", handleToggleClick);
     }
 
     return () => {
       if (toggleButton) {
-        toggleButton.removeEventListener('click', handleToggleClick);
+        toggleButton.removeEventListener("click", handleToggleClick);
       }
     };
   }, []);
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
 
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [isOpen]);
 
@@ -54,87 +53,37 @@ export default function MobileNav() {
     setTimeout(() => {
       const element = document.getElementById(id);
       if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
+        element.scrollIntoView({ behavior: "smooth" });
       }
     }, 300);
   };
 
   return (
     <>
-
       <div
         onClick={handleClose}
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          opacity: isOpen ? 1 : 0,
-          visibility: isOpen ? 'visible' : 'hidden',
-          transition: 'opacity 300ms ease, visibility 300ms ease',
-          zIndex: 9998,
-        }}
+        className={`fixed inset-0 bg-black/50 z-[9998] transition-[opacity,visibility] duration-300 ${isOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}
       />
 
-
       <div
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '280px',
-          height: '100vh',
-          backgroundColor: '#ffffff',
-          transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
-          transition: 'transform 300ms ease',
-          zIndex: 9999,
-          display: 'flex',
-          flexDirection: 'column',
-          boxShadow: isOpen ? '2px 0 8px rgba(0,0,0,0.1)' : 'none',
-        }}
+        className={`fixed top-0 left-0 w-[280px] h-screen bg-white flex flex-col z-[9999] transition-transform duration-300 ${isOpen ? "translate-x-0 shadow-[2px_0_8px_rgba(0,0,0,0.1)]" : "-translate-x-full"}`}
       >
-
-        <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '1rem' }}>
+        <div className="flex justify-end p-4">
           <button
             onClick={handleClose}
-            style={{
-              background: 'none',
-              border: 'none',
-              fontSize: '1.5rem',
-              cursor: 'pointer',
-              color: '#2D2D2D',
-              padding: '0.5rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
+            className="bg-transparent border-none text-2xl cursor-pointer text-text p-2 flex items-center justify-center"
             aria-label="Close menu"
           >
             ✕
           </button>
         </div>
 
-
-        <nav style={{ display: 'flex', flexDirection: 'column', padding: '2rem 1.5rem', gap: '1.5rem' }}>
+        <nav className="flex flex-col py-8 px-6 gap-6">
           {navItems.map((item) => (
             <button
               key={item.id}
               onClick={() => handleLinkClick(item.id)}
-              onMouseEnter={() => setHoveredId(item.id)}
-              onMouseLeave={() => setHoveredId(null)}
-              style={{
-                background: 'none',
-                border: 'none',
-                textAlign: 'left',
-                fontFamily: '"Cormorant Infant", serif',
-                fontSize: '1.25rem',
-                color: hoveredId === item.id ? '#5C6B4F' : '#2D2D2D',
-                cursor: 'pointer',
-                padding: 0,
-                transition: 'color 300ms ease',
-              }}
+              className="bg-transparent border-none text-left font-heading text-xl text-text cursor-pointer p-0 transition-colors duration-300 hover:text-primary-dark"
             >
               {item.label}
             </button>

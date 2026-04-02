@@ -1,16 +1,18 @@
 ---
 interface Props extends astroHTML.JSX.ButtonHTMLAttributes {
-  variant?: 'primary' | 'outline';
+  variant?: "primary" | "outline";
   className?: string;
 }
 
-const { variant = 'primary', className = '', type = 'button', ...rest } = Astro.props;
+const { variant = "primary", className = "", type = "button", ...rest } = Astro.props;
 
-const baseClasses = 'cursor-pointer text-base md:text-lg transition-colors duration-200';
+const baseClasses = "cursor-pointer text-base md:text-lg transition-colors duration-200";
 
 const variantClasses = {
-  primary: 'bg-primary-dark text-white rounded-full px-8 py-3 font-heading font-bold shadow-md hover:shadow-lg hover:bg-primary',
-  outline: 'border-2 border-primary-dark text-primary-dark rounded-full px-6 py-2 font-heading hover:bg-primary-light bg-transparent',
+  primary:
+    "bg-primary-dark text-white rounded-full px-8 py-3 font-heading font-bold shadow-md hover:shadow-lg hover:bg-primary",
+  outline:
+    "border-2 border-primary-dark text-primary-dark rounded-full px-6 py-2 font-heading hover:bg-primary-light bg-transparent",
 };
 ---
 

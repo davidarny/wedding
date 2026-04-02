@@ -13,7 +13,7 @@ apiClient.interceptors.response.use(
   (error) => {
     const message = error.response?.data?.message || "Произошла ошибка. Попробуйте позже.";
     return Promise.reject(new Error(message));
-  }
+  },
 );
 
 export default apiClient;
