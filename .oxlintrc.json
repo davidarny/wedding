@@ -1,0 +1,9 @@
+{
+  "categories": {
+    "correctness": "warn",
+    "suspicious": "warn"
+  },
+  "rules": {
+    "no-console": "off"
+  }
+}

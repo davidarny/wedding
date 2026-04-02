@@ -1,0 +1,23 @@
+---
+interface Props {
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';
+  cursive?: boolean;
+  size?: 'lg' | 'md' | 'sm';
+  className?: string;
+}
+
+const { as: Tag = 'h2', cursive = false, size = 'md', className = '' } = Astro.props;
+
+const sizeClasses = {
+  lg: 'text-4xl md:text-5xl',
+  md: 'text-3xl md:text-4xl',
+  sm: 'text-xl md:text-2xl',
+};
+
+const fontClasses = cursive ? 'font-heading italic' : 'font-heading font-bold';
+const baseClasses = 'text-center text-text';
+---
+
+<Tag class={`${baseClasses} ${sizeClasses[size]} ${fontClasses} ${className}`}>
+  <slot />
+</Tag>

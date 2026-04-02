@@ -1,0 +1,21 @@
+---
+interface Props {
+  id?: string;
+  className?: string;
+  background?: string;
+  noPadding?: boolean;
+}
+
+const { id, className = '', background, noPadding = false } = Astro.props;
+
+const paddingClass = noPadding ? '' : 'px-6 py-16 md:px-8 md:py-24';
+const bgStyle = background ? `background-image: url('${background}'); background-size: contain; background-position: center; background-repeat: no-repeat;` : '';
+---
+
+<section
+  id={id}
+  class={`max-w-3xl mx-auto ${paddingClass} ${className}`}
+  style={bgStyle}
+>
+  <slot />
+</section>

@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/* Font Faces */
+@font-face {
+  font-family: "Cormorant Infant";
+  src: url("/fonts/cormorant-infant-light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Infant";
+  src: url("/fonts/cormorant-infant-bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Custom Theme — Tailwind v4 @theme syntax */
+@theme {
+  /* Colors */
+  --color-bg: #ffffff;
+  --color-bg-soft: #f7f7f2;
+  --color-primary: #8B9D77;
+  --color-primary-dark: #5C6B4F;
+  --color-primary-light: #D4DFC7;
+  --color-text: #2D2D2D;
+  --color-text-muted: #6B6B6B;
+  --color-accent: #C4A97D;
+  --color-survey-bg: #E8F0EC;
+
+  /* Dress code palette */
+  --color-dress-1: #3D5A3A;
+  --color-dress-2: #6B7B4C;
+  --color-dress-3: #8B9D77;
+  --color-dress-4: #B5C4A3;
+  --color-dress-5: #D4C9A8;
+
+  /* Fonts */
+  --font-heading: "Cormorant Infant", serif;
+  --font-body: "Cormorant Infant", serif;
+}
+
+/* Base styles */
+body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}

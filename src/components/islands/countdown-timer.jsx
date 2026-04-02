@@ -1,0 +1,77 @@
+import { useState, useEffect } from "react";
+
+const TARGET_DATE = new Date("2026-06-06T15:00:00+03:00");
+
+function calculateTimeLeft() {
+  const now = new Date();
+  const diff = TARGET_DATE - now;
+
+  if (diff <= 0) {
+    return null; // Wedding has passed
+  }
+
+  const seconds = Math.floor(diff / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const weeks = Math.floor(days / 7);
+
+  return {
+    weeks,
+    days: days % 7,
+    hours: hours % 24,
+    minutes: minutes % 60,
+    seconds: seconds % 60,
+  };
+}
+
+export default function CountdownTimer() {
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  if (!timeLeft) {
+    return (
+      <div className="text-center py-8" style={{ fontFamily: '"Cormorant Infant", serif' }}>
+        <p className="text-2xl md:text-3xl font-bold" style={{ color: '#5C6B4F' }}>
+          Свадьба состоялась!
+        </p>
+      </div>
+    );
+  }
+
+  const units = [
+    { value: timeLeft.weeks, label: "недель" },
+    { value: timeLeft.days, label: "дней" },
+    { value: timeLeft.hours, label: "часов" },
+    { value: timeLeft.minutes, label: "минут" },
+    { value: timeLeft.seconds, label: "секунд" },
+  ];
+
+  return (
+    <div className="flex justify-center items-start gap-4 md:gap-8 py-8" style={{ fontFamily: '"Cormorant Infant", serif' }}>
+      {units.map((unit) => (
+        <div key={unit.label} className="text-center">
+          <div
+            className="text-3xl md:text-5xl font-bold leading-none"
+            style={{ color: '#2D2D2D' }}
+          >
+            {String(unit.value).padStart(2, "0")}
+          </div>
+          <div
+            className="text-xs md:text-sm mt-2 uppercase tracking-wider"
+            style={{ color: '#6B6B6B' }}
+          >
+            {unit.label}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}

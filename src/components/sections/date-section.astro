@@ -1,0 +1,38 @@
+---
+import SectionWrapper from '../ui/section-wrapper.astro';
+import SectionHeading from '../ui/section-heading.astro';
+import DecorativeDots from '../ui/decorative-dots.astro';
+---
+
+<section id="date" class="bg-white relative">
+  <SectionWrapper className="flex flex-col items-center text-center">
+    <p class="uppercase tracking-widest text-xs md:text-sm text-text-muted max-w-xs mx-auto font-body">
+      БУДЕМ СЧАСТЛИВЫ РАЗДЕЛИТЬ ЭТОТ ДЕНЬ С ВАМИ
+    </p>
+    
+    <SectionHeading size="lg" className="mt-6">
+      06 июня 2026
+    </SectionHeading>
+    
+    <p class="uppercase tracking-widest text-sm text-text-muted mt-2 font-body">
+      СУББОТА, 15:00
+    </p>
+    
+    <DecorativeDots />
+    
+    <p class="uppercase tracking-widest text-sm text-text-muted font-body">
+      ЖДЕМ ВАС!
+    </p>
+    
+    <div id="countdown-slot" class="mt-8 w-full"></div>
+  </SectionWrapper>
+
+  <div class="w-full overflow-hidden leading-none flex">
+    <img 
+      src="/images/floral-top-border.png" 
+      alt="" 
+      class="w-full h-auto object-cover pointer-events-none select-none"
+      aria-hidden="true"
+    />
+  </div>
+</section>

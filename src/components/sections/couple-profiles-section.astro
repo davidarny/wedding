@@ -1,0 +1,37 @@
+---
+import FloralFrame from '../ui/floral-frame.astro';
+---
+
+<section id="couple-profiles" class="py-20 md:py-32 px-4 relative">
+  <FloralFrame image="/images/floral-corner-frame.png" position="corners" className="absolute inset-0 opacity-20 pointer-events-none" />
+  
+  <div class="max-w-5xl mx-auto relative z-10">
+    <div class="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-24">
+      
+      <!-- Groom Card -->
+      <div class="text-center flex flex-col items-center">
+        <div class="relative">
+          <img 
+            src="/images/photos/groom-placeholder.svg" 
+            alt="Жених" 
+            class="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover mx-auto shadow-lg border-4 border-white" 
+          />
+        </div>
+        <p class="font-heading italic text-3xl mt-6 text-primary-dark">Жених</p>
+      </div>
+
+      <!-- Bride Card -->
+      <div class="text-center flex flex-col items-center">
+        <div class="relative">
+          <img 
+            src="/images/photos/bride-placeholder.svg" 
+            alt="Невеста" 
+            class="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover mx-auto shadow-lg border-4 border-white" 
+          />
+        </div>
+        <p class="font-heading italic text-3xl mt-6 text-primary-dark">Невеста</p>
+      </div>
+
+    </div>
+  </div>
+</section>

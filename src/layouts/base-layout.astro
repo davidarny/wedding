@@ -1,0 +1,27 @@
+---
+import "../styles/global.css";
+
+const { title = "Даниил & Анастасия — Свадьба 06.06.2026" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Приглашение на свадьбу Даниила и Анастасии. 06 июня 2026, г. Йошкар-Ола" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Даниил & Анастасия — Свадьба" />
+    <meta property="og:description" content="Приглашаем Вас разделить с нами радость этого незабываемого дня. 06.06.2026" />
+    <meta property="og:image" content="/images/floral-hero-frame.png" />
+    <meta property="og:type" content="website" />
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>" />
+
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-bg text-text overflow-x-hidden">
+    <slot />
+  </body>
+</html>
