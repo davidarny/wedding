@@ -102,6 +102,16 @@ function formatMessage(type, data) {
         `🍷 Алкоголь: ${data.alcohol || "не указано"}`,
       ].join("\n");
 
+    case "menu":
+      return [
+        `<b>🍽 Выбор блюд</b>`,
+        ``,
+        sender,
+        ``,
+        `🥗 Салат: ${data.salad || "не выбрано"}`,
+        `🍖 Горячее: ${data.hotCourse || "не выбрано"}`,
+      ].join("\n");
+
     default:
       return `<b>📩 Новое сообщение</b>\n\n${sender}\n\n${JSON.stringify(data)}`;
   }

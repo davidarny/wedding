@@ -1,5 +1,6 @@
 ---
 import SectionHeading from "../ui/section-heading.astro";
+import MenuSelection from "../islands/menu-selection.jsx";
 ---
 
 <section id="info" class="bg-white/80">
@@ -9,32 +10,7 @@ import SectionHeading from "../ui/section-heading.astro";
     <div class="py-6 md:py-10">
       <SectionHeading cursive size="md" className="mb-8">Меню</SectionHeading>
       
-      <div class="max-w-md mx-auto space-y-8">
-        <!-- Салаты -->
-        <div>
-          <SectionHeading as="h3" cursive size="sm" className="mb-4">Салаты</SectionHeading>
-          <ul class="space-y-2 text-center">
-            <li class="font-body text-lg text-text">Салат с сёмгой в тайском стиле</li>
-            <li class="font-body text-lg text-text">Салат «Оливье» с ростбифом</li>
-            <li class="font-body text-lg text-text">Салат «Цезарь» с куриным филе</li>
-          </ul>
-        </div>
-
-        <!-- Горячее -->
-        <div>
-          <SectionHeading as="h3" cursive size="sm" className="mb-4">Горячее</SectionHeading>
-          <ul class="space-y-2 text-center">
-            <li class="font-body text-lg text-text">Свиная вырезка с апельсиновым соусом</li>
-            <li class="font-body text-lg text-text">Полента с рваной говядиной</li>
-            <li class="font-body text-lg text-text">Судак под итальянским маринадом</li>
-            <li class="font-body text-lg text-text">Индейка со сливочно-шпинатным соусом</li>
-          </ul>
-        </div>
-      </div>
-
-      <p class="font-body text-base leading-relaxed text-center max-w-md mx-auto text-text-muted mt-8 text-pretty">
-        Сообщите нам заранее, если у вас есть какие-либо предпочтения или диетические ограничения.
-      </p>
+      <MenuSelection client:visible />
     </div>
 
     <!-- Block 2 — Пожелания по подаркам -->

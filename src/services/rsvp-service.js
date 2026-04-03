@@ -25,3 +25,10 @@ export async function submitSurvey(data) {
     data: withUsername(data),
   });
 }
+
+export async function submitMenu(data) {
+  return apiClient.post("/send-telegram", {
+    type: "menu",
+    data: withUsername(data),
+  });
+}
