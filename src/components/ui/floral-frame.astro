@@ -4,9 +4,12 @@ interface Props {
   position: "top" | "full" | "corners" | "bottom";
   className?: string;
   imageClassName?: string;
+  fetchpriority?: "high" | "low" | "auto";
+  width?: number;
+  height?: number;
 }
 
-const { image, position, className = "", imageClassName = "" } = Astro.props;
+const { image, position, className = "", imageClassName = "", fetchpriority, width, height } = Astro.props;
 
 const positionClasses = {
   top: "top-0 left-0 right-0 w-full h-auto",
@@ -22,6 +25,9 @@ const positionClasses = {
     alt=""
     class={`absolute pointer-events-none select-none z-0 ${positionClasses[position]} ${imageClassName}`}
     aria-hidden="true"
+    fetchpriority={fetchpriority}
+    width={width}
+    height={height}
   />
   <div class="relative z-10 h-full">
     <slot />

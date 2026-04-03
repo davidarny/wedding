@@ -7,7 +7,7 @@ function calculateTimeLeft() {
 	const diff = TARGET_DATE - now;
 
 	if (diff <= 0) {
-		return null; // Wedding has passed
+		return false; // Wedding has passed
 	}
 
 	const seconds = Math.floor(diff / 1000);
@@ -25,10 +25,19 @@ function calculateTimeLeft() {
 	};
 }
 
+const UNIT_LABELS = [
+	{ key: "weeks", label: "недель" },
+	{ key: "days", label: "дней" },
+	{ key: "hours", label: "часов" },
+	{ key: "minutes", label: "минут" },
+	{ key: "seconds", label: "секунд" },
+];
+
 export default function CountdownTimer() {
-	const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
+	const [timeLeft, setTimeLeft] = useState(null);
 
 	useEffect(() => {
+		setTimeLeft(calculateTimeLeft());
 		const timer = setInterval(() => {
 			setTimeLeft(calculateTimeLeft());
 		}, 1000);
@@ -36,7 +45,24 @@ export default function CountdownTimer() {
 		return () => clearInterval(timer);
 	}, []);
 
-	if (!timeLeft) {
+	if (timeLeft === null) {
+		return (
+			<div className="flex justify-center items-start gap-4 md:gap-8 py-4">
+				{UNIT_LABELS.map((unit) => (
+					<div key={unit.label} className="text-center">
+						<div className="text-3xl md:text-5xl font-bold leading-none text-text">
+							--
+						</div>
+						<div className="text-xs md:text-sm mt-2 uppercase tracking-wider text-text-muted">
+							{unit.label}
+						</div>
+					</div>
+				))}
+			</div>
+		);
+	}
+
+	if (timeLeft === false) {
 		return (
 			<div className="text-center py-8">
 				<p className="text-2xl md:text-3xl font-bold text-primary-dark">
@@ -46,20 +72,12 @@ export default function CountdownTimer() {
 		);
 	}
 
-	const units = [
-		{ value: timeLeft.weeks, label: "недель" },
-		{ value: timeLeft.days, label: "дней" },
-		{ value: timeLeft.hours, label: "часов" },
-		{ value: timeLeft.minutes, label: "минут" },
-		{ value: timeLeft.seconds, label: "секунд" },
-	];
-
 	return (
 		<div className="flex justify-center items-start gap-4 md:gap-8 py-4">
-			{units.map((unit) => (
+			{UNIT_LABELS.map((unit) => (
 				<div key={unit.label} className="text-center">
 					<div className="text-3xl md:text-5xl font-bold leading-none text-text">
-						{String(unit.value).padStart(2, "0")}
+						{String(timeLeft[unit.key]).padStart(2, "0")}
 					</div>
 					<div className="text-xs md:text-sm mt-2 uppercase tracking-wider text-text-muted">
 						{unit.label}

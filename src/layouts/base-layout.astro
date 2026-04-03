@@ -19,6 +19,13 @@ const { title = "Даниил & Анастасия — Свадьба 06.06.2026
 
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>" />
 
+    <!-- Preload LCP image -->
+    <link rel="preload" as="image" type="image/webp" href="/images/floral-hero-frame.webp" />
+
+    <!-- Preload critical fonts -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/cormorant-infant-light.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/cormorant-infant-bold.woff2" crossorigin />
+
     <title>{title}</title>
   </head>
   <body class="min-h-screen bg-bg text-text overflow-x-hidden">

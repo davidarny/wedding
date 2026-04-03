@@ -30,10 +30,14 @@ const events = [
   <div class="bg-primary-dark relative overflow-hidden py-16 md:py-24">
     <!-- Floral overlay -->
     <img 
-      src="/images/floral-top-border.png" 
+      src="/images/floral-top-border.webp" 
       alt="" 
       class="absolute top-0 left-0 w-full h-auto opacity-30 pointer-events-none select-none z-0"
       aria-hidden="true"
+      loading="lazy"
+      decoding="async"
+      width={1240}
+      height={1748}
     />
     
     <div class="relative z-10 container mx-auto px-4">
@@ -51,7 +55,7 @@ const events = [
           <div class={`flex flex-col md:flex-row gap-4 md:gap-8 ${index !== events.length - 1 ? 'border-b border-primary-light/30 pb-8 mb-8' : ''}`}>
             <!-- Left side: Time & Date -->
             <div class="md:w-1/4 flex flex-col md:text-right md:pt-1 shrink-0">
-              <span class="text-accent font-bold text-lg">{event.time}</span>
+              <span class="text-accent-dark font-bold text-lg">{event.time}</span>
               <span class="text-text-muted text-sm">{event.date}</span>
             </div>
             

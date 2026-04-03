@@ -3,7 +3,8 @@
 /* Font Faces */
 @font-face {
 	font-family: "Cormorant Infant";
-	src: url("/fonts/cormorant-infant-light.woff") format("woff");
+	src: url("/fonts/cormorant-infant-light.woff2") format("woff2"),
+	     url("/fonts/cormorant-infant-light.woff") format("woff");
 	font-weight: 300;
 	font-style: normal;
 	font-display: swap;
@@ -11,7 +12,8 @@
 
 @font-face {
 	font-family: "Cormorant Infant";
-	src: url("/fonts/cormorant-infant-bold.woff") format("woff");
+	src: url("/fonts/cormorant-infant-bold.woff2") format("woff2"),
+	     url("/fonts/cormorant-infant-bold.woff") format("woff");
 	font-weight: 700;
 	font-style: normal;
 	font-display: swap;
@@ -19,7 +21,8 @@
 
 @font-face {
 	font-family: "LeJardin";
-	src: url("/fonts/le-jardine.woff") format("woff");
+	src: url("/fonts/le-jardine.woff2") format("woff2"),
+	     url("/fonts/le-jardine.woff") format("woff");
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
@@ -31,11 +34,12 @@
   --color-bg: #ffffff;
   --color-bg-soft: #f7f7f2;
   --color-primary: #8b9d77;
-  --color-primary-dark: #5c6b4f;
+  --color-primary-dark: #4e5f42;
   --color-primary-light: #d4dfc7;
   --color-text: #2d2d2d;
   --color-text-muted: #6b6b6b;
   --color-accent: #c4a97d;
+  --color-accent-dark: #8e7040;
   --color-survey-bg: #e8f0ec;
 
   /* Dress code palette */
@@ -99,6 +103,6 @@
 
 @layer components {
 	.tile-pattern-block {
-		background: url("/images/floral-tile-pattern.png") repeat center / 400px;
+		background: url("/images/floral-tile-pattern.webp") repeat center / 400px;
 	}
 }
