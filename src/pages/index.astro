@@ -8,16 +8,10 @@ import LandingPage from "../components/landing-page.astro";
     <LandingPage />
   </div>
 
-  <div class="desktop-stage hidden md:flex">
+  <div id="desktop-stage" class="desktop-stage hidden md:flex">
     <div class="mobile-shell">
-      <div class="mobile-shell__screen">
-        <iframe
-          id="embedded-frame"
-          src="/embedded"
-          title="Мобильная версия приглашения"
-          class="mobile-shell__frame"
-          loading="eager"
-        ></iframe>
+      <div id="embedded-screen" class="mobile-shell__screen">
+        <!-- iframe injected by JS only on desktop -->
       </div>
       <img src="/images/frame.webp" alt="" class="mobile-shell__device-frame" loading="lazy" />
     </div>
@@ -25,11 +19,17 @@ import LandingPage from "../components/landing-page.astro";
 </BaseLayout>
 
 <script>
-  const search = window.location.search;
-  if (search) {
-    const frame = document.getElementById("embedded-frame");
-    if (frame) {
-      frame.src = `/embedded${search}`;
+  // Only create the embedded iframe on desktop (md: 768px+)
+  // This prevents mobile from loading the entire page twice
+  if (window.matchMedia("(min-width: 768px)").matches) {
+    const screen = document.getElementById("embedded-screen");
+    if (screen) {
+      const iframe = document.createElement("iframe");
+      iframe.id = "embedded-frame";
+      iframe.title = "Мобильная версия приглашения";
+      iframe.className = "mobile-shell__frame";
+      iframe.src = `/embedded${window.location.search || ""}`;
+      screen.appendChild(iframe);
     }
   }
 </script>

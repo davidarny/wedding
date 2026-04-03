@@ -7,9 +7,10 @@ interface Props {
   fetchpriority?: "high" | "low" | "auto";
   width?: number;
   height?: number;
+  isLCP?: boolean;
 }
 
-const { image, position, className = "", imageClassName = "", fetchpriority, width, height } = Astro.props;
+const { image, position, className = "", imageClassName = "", fetchpriority, width, height, isLCP = false } = Astro.props;
 
 const positionClasses = {
   top: "top-0 left-0 right-0 w-full h-auto",
@@ -28,6 +29,8 @@ const positionClasses = {
     fetchpriority={fetchpriority}
     width={width}
     height={height}
+    decoding={isLCP ? "sync" : "async"}
+    loading={isLCP ? "eager" : "lazy"}
   />
   <div class="relative z-10 h-full">
     <slot />
