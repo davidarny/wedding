@@ -12,6 +12,7 @@ import LandingPage from "../components/landing-page.astro";
     <div class="mobile-shell">
       <div class="mobile-shell__screen">
         <iframe
+          id="embedded-frame"
           src="/embedded"
           title="Мобильная версия приглашения"
           class="mobile-shell__frame"
@@ -22,6 +23,16 @@ import LandingPage from "../components/landing-page.astro";
     </div>
   </div>
 </BaseLayout>
+
+<script>
+  const search = window.location.search;
+  if (search) {
+    const frame = document.getElementById("embedded-frame");
+    if (frame) {
+      frame.src = `/embedded${search}`;
+    }
+  }
+</script>
 
 <style>
   @media (min-width: 768px) {

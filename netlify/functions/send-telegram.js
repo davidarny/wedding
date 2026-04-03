@@ -66,14 +66,24 @@ export default async function handler(request) {
   }
 }
 
+function formatSender(data) {
+  return data.username ? `👤 Гость: ${data.username}` : "👤 Гость: Анонимно";
+}
+
 function formatMessage(type, data) {
+  const sender = formatSender(data);
+
   switch (type) {
     case "rsvp":
-      return `<b>✅ Подтверждение присутствия</b>\n\nГость подтвердил присутствие на свадьбе.`;
+      return [`<b>✅ Подтверждение присутствия</b>`, ``, sender, ``, `Гость подтвердил присутствие на свадьбе.`].join(
+        "\n",
+      );
 
     case "message":
       return [
         `<b>💌 Сообщение для жениха и невесты</b>`,
+        ``,
+        sender,
         ``,
         data.message ? `<i>${data.message}</i>` : "(без сообщения)",
         ``,
@@ -86,11 +96,13 @@ function formatMessage(type, data) {
       return [
         `<b>📋 Ответы на опрос</b>`,
         ``,
+        sender,
+        ``,
         `🚗 Трансфер: ${data.transfer || "не указано"}`,
         `🍷 Алкоголь: ${data.alcohol || "не указано"}`,
       ].join("\n");
 
     default:
-      return `<b>📩 Новое сообщение</b>\n\n${JSON.stringify(data)}`;
+      return `<b>📩 Новое сообщение</b>\n\n${sender}\n\n${JSON.stringify(data)}`;
   }
 }
