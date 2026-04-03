@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { submitMessage, submitSurvey } from "../../services/rsvp-service.js";
+import { MessageCircleIcon } from "../ui/message-circle-icon.jsx";
+import { SendIcon } from "../ui/send-icon.jsx";
 import RadioGroup from "./radio-group.jsx";
 
 const formSchema = z.object({
@@ -83,7 +85,7 @@ export default function MessageSurveyForm() {
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-8 text-text">
       <div className="flex flex-col gap-4">
         <label htmlFor="message" className="text-xl font-medium">
-          💬 Добавить сообщение для жениха и невесты
+          <span className="inline-flex items-center gap-1.5"><MessageCircleIcon size={22} /> Добавить сообщение для жениха и невесты</span>
         </label>
         <textarea
           id="message"
@@ -129,7 +131,9 @@ export default function MessageSurveyForm() {
         disabled={status === "loading"}
         className="btn-gradient text-white border-none py-4.5 rounded-full text-xl font-semibold cursor-pointer font-[inherit] transition-all duration-200 shadow-btn w-full mt-4 disabled:opacity-70 disabled:cursor-not-allowed"
       >
-        {status === "loading" ? "Отправка..." : "✈ Отправить"}
+        <span className="flex items-center justify-center gap-1.5">
+          {status === "loading" ? "Отправка..." : <><SendIcon size={22} className="text-white" /> Отправить</>}
+        </span>
       </button>
     </form>
   );

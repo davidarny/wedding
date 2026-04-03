@@ -1,11 +1,12 @@
 ---
+import { MapPinIcon } from "../ui/map-pin-icon.jsx";
 ---
 
 <section id="map" class="w-full">
   <div id="map-container" class="w-full h-[400px] md:h-[500px] relative bg-bg-soft">
     <!-- Placeholder shown while map loads -->
     <div id="map-placeholder" class="w-full h-full flex flex-col items-center justify-center gap-3">
-      <span class="text-4xl" aria-hidden="true">📍</span>
+      <MapPinIcon client:visible size={36} />
       <span class="text-sm text-text-muted">Загрузка карты...</span>
     </div>
   </div>
@@ -16,7 +17,7 @@
       rel="noopener noreferrer"
       class="text-primary-dark hover:text-primary underline font-heading text-lg transition-colors"
     >
-      📍 Открыть в Яндекс.Картах
+      <span class="inline-flex items-center gap-1.5"><MapPinIcon client:visible size={20} /> Открыть в Яндекс.Картах</span>
     </a>
   </div>
 </section>

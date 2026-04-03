@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import { useState } from "react";
 import { submitRsvp } from "../../services/rsvp-service.js";
+import { CheckIcon } from "../ui/check-icon.jsx";
 
 const buttonClasses = {
 	idle: "btn-gradient-dark cursor-pointer",
@@ -9,11 +10,11 @@ const buttonClasses = {
 	error: "btn-gradient-dark cursor-pointer",
 };
 
-const buttonText = {
-	idle: "✓ Подтвердить",
+const buttonContent = {
+	idle: <><CheckIcon size={20} className="text-white" /> Подтвердить</>,
 	loading: "Отправка...",
-	success: "✓ Подтверждено!",
-	error: "✓ Попробовать снова",
+	success: <><CheckIcon size={20} className="text-white" /> Подтверждено!</>,
+	error: <><CheckIcon size={20} className="text-white" /> Попробовать снова</>,
 };
 
 export default function RsvpForm() {
@@ -46,7 +47,9 @@ export default function RsvpForm() {
 					buttonClasses[status],
 				)}
 			>
-				{buttonText[status]}
+				<span className="flex items-center justify-center gap-1.5">
+					{buttonContent[status]}
+				</span>
 			</button>
 			{status === "error" && (
 				<p className="text-red-600 mt-2 text-sm">{errorMsg}</p>

@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import { useEffect, useState } from "react";
+import { XIcon } from "../ui/x-icon.jsx";
 
 const navItems = [
   { id: "hero", label: "Главная" },
@@ -83,7 +84,7 @@ export default function MobileNav({ embeddedShell = false }) {
             className="bg-transparent border-none text-2xl cursor-pointer text-text p-2 flex items-center justify-center"
             aria-label="Close menu"
           >
-            ✕
+            <XIcon size={24} />
           </button>
         </div>
 

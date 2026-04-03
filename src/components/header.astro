@@ -1,12 +1,13 @@
 ---
 import CalendarButton from "./islands/calendar-button.jsx";
+import { MenuIcon } from "./ui/menu-icon.jsx";
 ---
 
 <header id="header" class="fixed top-0 left-0 w-full z-50 bg-primary-light/80 backdrop-blur-sm h-14">
   <div class="max-w-4xl mx-auto h-full flex items-center justify-between px-4">
   <div class="flex items-center gap-4">
-    <button id="menu-toggle" aria-label="Открыть меню" class="text-2xl text-primary-dark cursor-pointer">
-      ☰
+    <button id="menu-toggle" aria-label="Открыть меню" class="text-primary-dark cursor-pointer bg-transparent border-none p-0">
+      <MenuIcon client:load size={24} />
     </button>
     <span class="font-heading text-primary-dark text-lg">Приглашение</span>
   </div>
