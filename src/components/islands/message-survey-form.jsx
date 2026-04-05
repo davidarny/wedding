@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { MessageCircle, Send } from "lucide-react";
+import { Coins, MessageCircle, Send } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -99,7 +99,10 @@ export default function MessageSurveyForm() {
             {...register("moneyGift")}
             className="size-5 accent-primary cursor-pointer"
           />
-          денежный подарок
+          <span className="inline-flex items-center gap-1.5">
+            денежный подарок
+            <Coins size={18} className="text-primary" />
+          </span>
         </label>
       </div>
 
