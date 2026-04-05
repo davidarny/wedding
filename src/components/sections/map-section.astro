@@ -3,12 +3,17 @@ import { MapPinIcon } from "../ui/map-pin-icon.jsx";
 ---
 
 <section id="map" class="w-full">
-  <div id="map-container" class="w-full h-[400px] md:h-[500px] relative bg-bg-soft">
-    <!-- Placeholder shown while map loads -->
-    <div id="map-placeholder" class="w-full h-full flex flex-col items-center justify-center gap-3">
-      <MapPinIcon client:visible size={36} />
-      <span class="text-sm text-text-muted">Загрузка карты...</span>
-    </div>
+  <div class="w-full h-[400px] md:h-[500px] relative bg-bg-soft">
+    <iframe
+      src="https://yandex.ru/map-widget/v1/?ll=47.89,56.63&z=12&l=map&pt=47.89,56.63,pm2rdm"
+      width="100%"
+      height="100%"
+      style="border: 0"
+      allowfullscreen
+      loading="eager"
+      title="Карта — место проведения свадьбы"
+      class="block"
+    ></iframe>
   </div>
   <div class="text-center py-4 px-6">
     <a
@@ -21,41 +26,3 @@ import { MapPinIcon } from "../ui/map-pin-icon.jsx";
     </a>
   </div>
 </section>
-
-<script>
-  let mapLoaded = false;
-
-  function loadMap() {
-    if (mapLoaded) return;
-    mapLoaded = true;
-
-    const container = document.getElementById("map-container");
-    const placeholder = document.getElementById("map-placeholder");
-    if (!container) return;
-
-    const iframe = document.createElement("iframe");
-    iframe.src = "https://yandex.ru/map-widget/v1/?ll=47.89,56.63&z=12&l=map&pt=47.89,56.63,pm2rdm";
-    iframe.width = "100%";
-    iframe.height = "100%";
-    iframe.style.border = "0";
-    iframe.allowFullscreen = true;
-    iframe.title = "Карта — место проведения свадьбы";
-    iframe.onload = () => placeholder?.remove();
-    container.appendChild(iframe);
-  }
-
-  // Auto-load when section approaches viewport
-  const mapSection = document.getElementById("map");
-  if (mapSection) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          loadMap();
-          observer.disconnect();
-        }
-      },
-      { rootMargin: "200px" }
-    );
-    observer.observe(mapSection);
-  }
-</script>
