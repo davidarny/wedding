@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Coins, MessageCircle, Send } from "lucide-react";
+import { BusFront, Coins, MessageCircle, Send, Wine } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -114,11 +114,13 @@ export default function MessageSurveyForm() {
 
         <div className="bg-survey-bg p-6 rounded-lg flex flex-col gap-6">
           <RadioGroup
+            icon={BusFront}
             label="Потребуется ли вам трансфер?"
             options={transferOptions}
             register={register("transfer")}
           />
           <RadioGroup
+            icon={Wine}
             label="Какой алкоголь вы предпочитаете?"
             options={alcoholOptions}
             register={register("alcohol")}
