@@ -103,6 +103,6 @@
 
 @layer components {
 	.tile-pattern-block {
-		background: url("/images/floral-tile-pattern.webp") repeat center / 400px;
+		background: url("/images/floral-tile-pattern.webp") repeat top center / 400px;
 	}
 }
