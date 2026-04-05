@@ -1,7 +1,7 @@
 import clsx from "clsx";
+import { Check } from "lucide-react";
 import { useState } from "react";
 import { submitMenu } from "../../services/rsvp-service.js";
-import { CheckIcon } from "../ui/check-icon.jsx";
 
 const saladOptions = [
   "Салат с сёмгой в тайском стиле",
@@ -96,7 +96,7 @@ export default function MenuSelection() {
 
       {status === "success" ? (
         <p className="font-body text-base leading-relaxed text-center text-primary-dark text-pretty">
-          <span className="inline-flex items-center gap-1.5"><CheckIcon size={20} /> Ваш выбор сохранён, спасибо!</span>
+          <span className="inline-flex items-center gap-1.5"><Check size={20} /> Ваш выбор сохранён, спасибо!</span>
         </p>
       ) : (
         <div className="text-center space-y-4">

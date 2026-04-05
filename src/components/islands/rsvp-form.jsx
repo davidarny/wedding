@@ -1,7 +1,7 @@
 import clsx from "clsx";
+import { Check } from "lucide-react";
 import { useState } from "react";
 import { submitRsvp } from "../../services/rsvp-service.js";
-import { CheckIcon } from "../ui/check-icon.jsx";
 
 const buttonClasses = {
 	idle: "btn-gradient-dark cursor-pointer",
@@ -11,10 +11,10 @@ const buttonClasses = {
 };
 
 const buttonContent = {
-	idle: <><CheckIcon size={20} className="text-white" /> Подтвердить</>,
+	idle: <><Check size={20} className="text-white" /> Подтвердить</>,
 	loading: "Отправка...",
-	success: <><CheckIcon size={20} className="text-white" /> Подтверждено!</>,
-	error: <><CheckIcon size={20} className="text-white" /> Попробовать снова</>,
+	success: <><Check size={20} className="text-white" /> Подтверждено!</>,
+	error: <><Check size={20} className="text-white" /> Попробовать снова</>,
 };
 
 export default function RsvpForm() {
