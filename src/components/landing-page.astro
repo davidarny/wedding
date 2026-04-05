@@ -16,13 +16,35 @@ import CountdownTimer from "./islands/countdown-timer.jsx";
 import RsvpForm from "./islands/rsvp-form.jsx";
 import MessageSurveyForm from "./islands/message-survey-form.jsx";
 import MobileNav from "./islands/mobile-nav.jsx";
+import HomeMotion from "./islands/home-motion.jsx";
 
-const { embeddedShell = false } = Astro.props;
+const { embeddedShell = false, enableMotion = false } = Astro.props;
+const motionMode = enableMotion === true ? "always" : enableMotion === "runtime" ? "runtime" : "off";
 ---
+
+{motionMode === "always" && (
+  <script is:inline>
+    document.documentElement.classList.add("home-motion");
+    window.setTimeout(() => {
+      document.documentElement.classList.remove("home-motion");
+    }, 4000);
+  </script>
+)}
+{motionMode === "runtime" && (
+  <script is:inline>
+    if (new URLSearchParams(window.location.search).get("motion") === "1") {
+      document.documentElement.classList.add("home-motion");
+      window.setTimeout(() => {
+        document.documentElement.classList.remove("home-motion");
+      }, 4000);
+    }
+  </script>
+)}
 
 <div class:list={["landing-page", embeddedShell && "landing-page--embedded-shell"]}>
   <Header />
   <MobileNav client:load embeddedShell={embeddedShell} />
+  {motionMode !== "off" && <HomeMotion client:load runtimeQuery={motionMode === "runtime"} />}
 
   <main class="landing-page__main pt-14">
     <div class="landing-page__first-screen h-[calc(100svh-3.5rem)] flex flex-col overflow-hidden">
@@ -70,5 +92,35 @@ const { embeddedShell = false } = Astro.props;
 
   .landing-page--embedded-shell .landing-page__first-screen {
     height: calc(100svh - 3.5rem - var(--device-safe-top));
+  }
+
+  :global(html.home-motion #header) {
+    opacity: 0;
+    transform: translate3d(0, -1rem, 0);
+    will-change: opacity, transform;
+  }
+
+  :global(html.home-motion #hero .bg-gradient-to-t) {
+    opacity: 0;
+    transform: translate3d(0, 2.5rem, 0);
+    will-change: opacity, transform;
+  }
+
+  :global(html.home-motion #hero img[fetchpriority="high"]) {
+    opacity: 0;
+    transform: translate3d(0, 2rem, 0) scale(1.5);
+    will-change: opacity, transform;
+  }
+
+  :global(html.home-motion #hero .bg-gradient-to-t > *) {
+    opacity: 0;
+    transform: translate3d(0, 1.5rem, 0);
+    will-change: opacity, transform;
+  }
+
+  :global(html.home-motion #date) {
+    opacity: 0;
+    transform: translate3d(0, 2rem, 0);
+    will-change: opacity, transform;
   }
 </style>

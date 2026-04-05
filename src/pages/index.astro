@@ -5,7 +5,7 @@ import LandingPage from "../components/landing-page.astro";
 
 <BaseLayout>
   <div class="md:hidden">
-    <LandingPage />
+    <LandingPage enableMotion />
   </div>
 
   <div id="desktop-stage" class="desktop-stage hidden md:flex">
@@ -25,6 +25,10 @@ import LandingPage from "../components/landing-page.astro";
     const screen = document.getElementById("embedded-screen");
     if (screen) {
       const iframe = document.createElement("iframe");
+      const searchParams = new URLSearchParams(window.location.search);
+
+      searchParams.set("motion", "1");
+
       iframe.id = "embedded-frame";
       iframe.title = "Мобильная версия приглашения";
       Object.assign(iframe.style, {
@@ -34,7 +38,7 @@ import LandingPage from "../components/landing-page.astro";
         display: "block",
         background: "white",
       });
-      iframe.src = `/embedded${window.location.search || ""}`;
+      iframe.src = `/embedded?${searchParams.toString()}`;
       screen.appendChild(iframe);
     }
   }
